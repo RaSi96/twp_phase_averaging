@@ -10,7 +10,6 @@ int dtw_cost_matrix(struct nd_array *s1, struct nd_array *s2, struct nd_array *r
 
 	struct nd_array min_array;
 	if (init_array(&min_array, 3, 3, 1)) {
-		free(min_array.data);
 		return 1;
 	}
 
@@ -46,10 +45,10 @@ int dtw_path(struct nd_array *r)
 	if (init_array(&pathway, (r->size) * 2, r->size, 2)) {
 		fprintf(stderr, "ERROR: dtw_path(): error initialising pathway\n");
 		return 1;
-	} else {
-		for (int i = 0; i < pathway.size; i++) {
-			pathway.data[i] = INFINITY;
-		}
+	}
+
+	for (int i = 0; i < pathway.size; i++) {
+		pathway.data[i] = INFINITY;
 	}
 
 	struct nd_array min_array;
@@ -118,7 +117,7 @@ int difference_path(struct nd_array *r)
 	if (init_array(&diff_path, r->size, r->nrow, r->ncol)) {
 		fprintf(
 			stderr,
-		  "ERROR: difference_path(): error initialising diff_path\n"
+			"ERROR: difference_path(): error initialising diff_path\n"
 		);
 		return 1;
 	}
