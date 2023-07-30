@@ -1,4 +1,4 @@
-﻿﻿# Introduction
+# Introduction
 This repository contains basic implementations of the paper written by Sioros, G., & Nymoen, K. (2021, September 2): Accurate shape and phase averaging of time series through Dynamic Time Warping; available on [arXiv.org](https://arxiv.org/abs/2109.00978v1).
 
 The averaging algorithm, as with most time series averaging algorithms, is based off Dynamic Time Warping to boot, but in contrast to other solutions like DBA, PSA and NLAAF, this approach also considers phase alignment through time resulting in a mean sequence that averages phase and amplitude variation.
@@ -6,7 +6,7 @@ The averaging algorithm, as with most time series averaging algorithms, is based
 Note that these algorithms have been shown in their respective papers to significantly outperform a simple point-wise arithmetic mean between two given temporal vectors; of course, these algorithms are also applicable to unequal length vectors.
 
 # Repository Structure
-This repository contains 2 implementations, one in C and another in Python. The structure of the repository is as follows:
+This repository contains 2 implementations, one in C and another in Python, the latter of which is the more usable one (as of the time of this writing). The structure of the repository is as follows:
 ```
 ./src-python
 	../__init__.py
