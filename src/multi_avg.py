@@ -29,7 +29,6 @@ def unequal_euc(*seqs):
             [  0.        ,   0.        ,  66.5       ],
             [  0.        ,   0.        ,   0.        ]])
     """
-    # locally-scoped variables
     py_len = len
     py_range = range
     np_sum = np.sum
@@ -39,14 +38,13 @@ def unequal_euc(*seqs):
     combos = list(combinations(range(n), 2))
     min_len = min([py_len(v) for v in seqs]) - 1
 
-    # functionality
     for i, j in combos:
         s_1 = seqs[i]
         s_1_len = py_len(s_1)
         s_2 = seqs[j]
         s_2_len = py_len(s_2)
 
-        arr = [(s_1[i] - s_2[i]) ** 2 for i in py_range(min_len)]
+        arr = [(s_1[i] - s_2[i])**2 for i in py_range(min_len)]
         d_mat[i, j] = (s_1_len / s_2_len) * np_sum(arr)
 
     return d_mat
@@ -83,7 +81,6 @@ def twp_multi_average(seq_list, thresh = 0):
     array([7.33333333, 8.        , 7.33333333, 8.33333333, 8.5       ,
            8.        ])
     """
-    # locally-scoped variables
     np_unrav = np.unravel_index
     np_argmax = np.argmax
     np_arr = np.array
@@ -94,7 +91,6 @@ def twp_multi_average(seq_list, thresh = 0):
     get_prf = warp_profile
     get_avg = twp_average
 
-    # functionality
     d_mat = get_euc(*seq_list)
 
     while d_mat.max() > thresh:

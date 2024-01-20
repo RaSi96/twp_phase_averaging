@@ -46,13 +46,11 @@ def dtw_cost_matrix(seq_1, seq_2, distance = np.linalg.norm):
             [inf, 40., 25., 22., 23., 23., 27.],
             [inf, 43., 25., 23., 22., 23., 26.]])
     """
-    # locally-scoped variables
     py_len = len
     py_min = min
     py_range = range
     fn_dist = distance
 
-    # functionality
     dtw_matrix = np.matrix(np.ones((py_len(seq_1), py_len(seq_2))) * np.inf)
     dtw_matrix[0, 0] = 0.0
 
@@ -98,12 +96,10 @@ def dtw_opt_path(cost_matrix):
     >>> dtw_opt_path(mat)
     [(0, 0), (1, 1), (2, 2), (3, 3), (3, 4), (4, 5), (5, 5), (6, 5), (7, 6)]
     """
-    # locally-scoped variables
     matches = []
     m_append = matches.append
     np_argmin = np.argmin
 
-    # functionality
     (i, j) = cost_matrix.shape
     i -= 1
     j -= 1
@@ -163,11 +159,9 @@ def warp_profile(dtw_path):
      12: -1,
      13: -1}
     """
-    # locally-scoped variables
     py_len = len
     np_arr = np.array
 
-    # functionality
     diff_path = [
         np_arr(dtw_path[i + 1]) - np_arr(dtw_path[i])
         for i in range(py_len(dtw_path) - 1)
@@ -218,12 +212,10 @@ def twp_average(seq_1, seq_2, warp_profile):
     >>> twp_average(p1, p2, wprof)
     array([7.5, 7. , 6.5, 8.5, 9. , 6.5, 7. ])
     """
-    # locally-scoped variables
     py_int = int
     np_floor = np.floor
     wp_half = list(warp_profile.items())[::2]
 
-    # functionality
     s1_i = np_floor([(t - p) / 2 for t, p in wp_half])
     s2_i = np_floor([(t + p) / 2 for t, p in wp_half])
 

@@ -77,10 +77,8 @@ def plot_averages(seq_list, marker_list = None, label_list = None):
     # plt.grid(True, linestyle = "--")
     # plt.legend();
 
-    # locally-scoped variables
     plt_plot = plt.plot
 
-    # functionality
     for s, m, l in zip(seq_list, marker_list, label_list):
         plt_plot(s, marker = m, label = l)
 
